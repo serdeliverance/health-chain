@@ -28,6 +28,6 @@ object HealthChain {
         .parseString(s"""akka.remote.artery.canonical.port=$port""")
         .withFallback(ConfigFactory.load())
 
-    ActorSystem[Nothing](RootBehavior(), "ClusterSystem", config)
+    ActorSystem[Nothing](RootBehavior(), "HealthChain", config)
   }
 }

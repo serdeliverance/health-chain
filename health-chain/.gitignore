@@ -1,0 +1,22 @@
+
+  
+logs
+target
+/.bsp
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+project/project
+
+# metals
+.vscode/
+.metals/
+.bloop/
+metals.sbt
+# IntelliJ
+
+.idea/
+.bsp/

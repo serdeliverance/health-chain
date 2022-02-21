@@ -1,6 +1,6 @@
 # health-chain
 
-A blockchain for managing medical records in a descentralized and secure way.
+A blockchain for managing medical records in a decentralized and secure way.
 
 ## Stack
 

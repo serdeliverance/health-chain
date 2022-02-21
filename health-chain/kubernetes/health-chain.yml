@@ -1,0 +1,20 @@
+apiVersion: "v1"
+kind: "Namespace"
+metadata:
+  name: "health-chain"
+---
+apiVersion: com.healthchain/v1
+kind: Deployment
+metadata:
+  name: health-chain-node-1
+  namespace: "health-chain"
+spec:
+  replicas: 1
+  image: health-chain:0.1.0-SNAPSHOT
+  javaOptions: "-Xlog:gc -XX:InitialRAMPercentage=75 -XX:MaxRAMPercentage=75"
+  resources:
+    limites:
+      memory: "1Gi"
+    requests:
+      memory: "1Gi"
+      cpu: "1"

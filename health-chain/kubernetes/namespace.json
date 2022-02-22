@@ -1,0 +1,10 @@
+{
+  "kind": "Namespace",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "health-chain",
+    "labels": {
+      "name": "health-chain"
+    }
+  }
+}

@@ -1,31 +1,39 @@
-apiVersion: "v1"
-kind: "Namespace"
-metadata:
-  name: "health-chain"
----
-apiVersion: com.healthchain/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: health-chain-node-1
-  namespace: "health-chain"
+  labels:
+    app: health-chain
+  name: health-chain
+  namespace: health-chain
 spec:
-  replicas: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: health-chain
   template:
     metadata:
       labels:
-        app: "HealthChain"
+        app: health-chain
+        actorSystemName: HealthChain
     spec:
       containers:
       - name: health-chain
         image: health-chain:0.1.0-SNAPSHOT
+        imagePullPolicy: Never
         readinessProbe:
           httpGet:
             path: /ready
             port: management
+          periodSeconds: 10
+          failureThreshold: 10
+          initialDelaySeconds: 20
         livenessProbe:
           httpGet:
             path: /alive
             port: management
+          periodSeconds: 10
+          failureThreshold: 10
+          initialDelaySeconds: 20
         ports:
           - name: management
             containerPort: 8558
@@ -39,3 +47,24 @@ spec:
           requests:
             cpu: 1
             memory: 512Mi
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: read-pods
+subjects:
+  - kind: User
+    name: system:serviceaccount:health-chain:default
+  roledef:
+    kind: Role
+    name: pod-reader
+    apiGroup: rbac.authorization.k8s.io

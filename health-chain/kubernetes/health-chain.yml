@@ -64,7 +64,8 @@ metadata:
 subjects:
   - kind: User
     name: system:serviceaccount:health-chain:default
-  roledef:
-    kind: Role
-    name: pod-reader
-    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+    

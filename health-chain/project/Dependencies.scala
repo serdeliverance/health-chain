@@ -9,9 +9,12 @@ object Dependencies {
     val scalaTest      = "3.2.9"
   }
 
-  val akkaTyped                = "com.typesafe.akka" %% "akka-actor-typed"           % Versions.akka
   val akkaCluster              = "com.typesafe.akka" %% "akka-cluster-typed"         % Versions.akka
+  val akkaClusterSharding      = "com.typesafe.akka" %% "akka-cluster-sharding"      % Versions.akka
+  val akkaDiscovery            = "com.typesafe.akka" %% "akka-discovery"             % Versions.akka
+  val akkaPersistence          = "com.typesafe.akka" %% "akka-persistence"           % Versions.akka
   val akkaSerializationJackson = "com.typesafe.akka" %% "akka-serialization-jackson" % Versions.akka
+  val akkaTyped                = "com.typesafe.akka" %% "akka-actor-typed"           % Versions.akka
   val akkaTypedTestkit         = "com.typesafe.akka" %% "akka-actor-testkit-typed"   % Versions.akka
 
   val akkaManagementClusterHttp            = "com.lightbend.akka.management" %% "akka-management-cluster-http"      % Versions.akkaManagement

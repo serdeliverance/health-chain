@@ -15,12 +15,15 @@ lazy val root = project
   .settings(
     Compile / mainClass := Some("com.healthchain.HealthChain"),
     libraryDependencies ++= Seq(
-      akkaTyped,
       akkaCluster,
-      akkaSerializationJackson,
+      akkaClusterSharding,
+      akkaDiscovery,
       akkaManagementClusterHttp,
       akkaManagementClusterBootstrap,
       akkaManagementDiscoveryKubernetesApi,
+      akkaPersistence,
+      akkaSerializationJackson,
+      akkaTyped,
       logback,
       akkaTypedTestkit % Test,
       scalaTest % Test
